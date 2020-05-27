@@ -1,0 +1,74 @@
+= <unk> <unk> reaction =
+= <unk> <unk> reaction =
+
+The <unk> <unk> reaction ( often referred to as simply the <unk> <unk> ) is a chemical reaction used in organic chemistry for the synthesis of <unk> . The reaction is typically divided into classical and modern variants , depending on the reagents and substrates employed . It was originally discovered by Ivan Nikolaevich <unk> ( 1906 – 1957 ) in 1941 while studying the rearrangements of allyl vinyl ketones .
+As originally described , the <unk> <unk> involves the activation of a <unk> ketone using a stoichiometric Lewis acid or <unk> acid promoter . The key step of the reaction mechanism involves a cationic 4π @-@ <unk> ring closure which forms the <unk> product ( See Mechanism below ) . As the reaction has been developed , variants involving substrates other than <unk> ketones and promoters other than Lewis acids have been subsumed under the name <unk> <unk> provided that they follow a similar mechanistic pathway .
+The success of the <unk> <unk> as a tool in organic synthesis stems from the utility and ubiquity of <unk> as both motifs in natural products ( including <unk> , the <unk> , and a subclass of prostaglandins ) and as useful synthetic intermediates for total synthesis . The reaction has been used in several total syntheses and several reviews have been published .
+
+= = Mechanism = =
+
+The mechanism of the classical <unk> <unk> reaction was first demonstrated experimentally by Shoppe to be an intramolecular <unk> and is outlined below . Activation of the ketone by the acid catalyst generates a <unk> cation which undergoes a thermally allowed 4π <unk> <unk> as dictated by the Woodward @-@ Hoffman rules . This generates an <unk> cation which undergoes an elimination reaction to lose a β @-@ hydrogen . Subsequent <unk> of the <unk> produces the <unk> product .
+As noted above , variants that deviate from this template are known ; what designates a <unk> <unk> in particular is the generation of the <unk> cation followed by <unk> ring closure to an <unk> cation . In order to achieve this transformation , the molecule must be in the s @-@ trans / s @-@ trans conformation , placing the vinyl groups in an appropriate orientation . The propensity of the system to enter this conformation dramatically influences reaction rate , with α @-@ substituted substrates having an increased population of the requisite conformer due to <unk> strain . Coordination of an electron donating α @-@ substituent by the catalyst can likewise increase the reaction rate by enforcing this conformation .
+Similarly , β @-@ substitution directed inward restricts the s @-@ trans conformation so severely that E @-@ Z isomerization has been shown to occur in advance of <unk> on a wide range of substrates , yielding the trans <unk> regardless of initial configuration . In this way , the <unk> <unk> is a rare example of a <unk> <unk> reaction , whereas most <unk> are <unk> . The example below uses <unk> hydride to trap the <unk> cation so that no elimination occurs . ( See Interrupted <unk> below )
+Along this same vein , <unk> vinyl ketones of the type studied extensively by Marcus <unk> of the University of Hawaii show dramatic rate acceleration due to the removal of β @-@ hydrogens , obviating a large amount of steric strain in the s @-@ cis conformer .
+
+= = Classical <unk> <unk> = =
+
+Though <unk> following the general template above had been observed prior to <unk> 's involvement , it was his study of the rearrangements of allyl vinyl ketones that marked the first major examination of this process . <unk> correctly reasoned that the <unk> olefin <unk> in situ to form a <unk> ketone before ring closure to the <unk> product . The reaction shown below involves an <unk> <unk> reaction to generate the requisite ketone .
+Research involving the reaction was relatively quiet in subsequent years , until in the mid @-@ 1980s when several syntheses employing the <unk> <unk> were published . Shown below are key steps in the syntheses of <unk> and Nor @-@ <unk> , the latter of which is thought to proceed via an unusual <unk> @-@ <unk> isomerization that generates the <unk> ketone .
+
+= = = <unk> = = =
+
+The classical version of the <unk> <unk> suffers from several drawbacks which modern variants attempt to circumvent . The first two are not evident from the mechanism alone , but are indicative of the barriers to <unk> ; the last three stem from selectivity issues relating to elimination and protonation of the intermediate .
+Strong Lewis or <unk> acids are typically required for the reaction ( e.g. TiCl4 , BF3 , <unk> ) . These promoters are not compatible with sensitive functional groups , limiting the substrate scope .
+Despite the mechanistic possibility for catalysis , multiple equivalents of the promoter are often required in order to effect the reaction . This limits the atom economy of the reaction .
+The elimination step is not <unk> ; if multiple β @-@ hydrogens are available for elimination , various products are often observed as mixtures . This is highly undesirable from an efficiency standpoint as arduous separation is typically required .
+Elimination destroys a potential <unk> , decreasing the potential usefulness of the reaction .
+<unk> of the <unk> is sometimes not <unk> , meaning that products can be formed as mixtures of <unk> .
+
+= = Modern variants = =
+
+The shortcomings noted above limit the usefulness of the <unk> <unk> reaction in its canonical form . However , modifications to the reaction focused on remedying its issues continue to be an active area of academic research . In particular , the research has focused on a few key areas : rendering the reaction catalytic in the promoter , effecting the reaction with more mild promoters to improve functional group tolerance , directing the <unk> of the elimination step , and improving the overall <unk> . These have been successful to varying degrees .
+Additionally , modifications focused on altering the progress of the reaction , either by generating the <unk> cation in an unorthodox fashion or by having the <unk> cation " intercepted " in various ways . Furthermore , enantioselective variants of various kinds have been developed . The sheer volume of literature on the subject prevents a comprehensive examination of this field ; key examples are given below .
+
+= = = Silicon @-@ directed <unk> = = =
+
+The earliest efforts to improve the selectivity of the <unk> <unk> took advantage of the β @-@ silicon effect in order to direct the <unk> of the elimination step . This chemistry was developed most extensively by Professor Scott Denmark of the University of Illinois , Urbana @-@ Champaign in the mid @-@ 1980s and utilizes stoichiometric amounts of iron trichloride to promote the reaction . With bicyclic products , the cis isomer was selected for to varying degrees .
+The silicon @-@ directed <unk> <unk> reaction was subsequently employed in the synthesis of the natural product <unk> , shown below . The <unk> takes place before elimination of the <unk> alcohol moiety , so that the resulting stereochemistry of the newly formed ring arises from approach of the silyl alkene anti to the ether .
+
+= = = Polarization = = =
+
+Drawing on the substituent effects compiled over various trials of the reaction , Professor Alison Frontier of the University of Rochester developed a paradigm for " polarized " <unk> <unk> in which electron donating and electron withdrawing groups are used to improve the overall selectivity of the reaction . Creation of an effective vinyl nucleophile and vinyl <unk> in the substrate allows catalytic activation with copper triflate and <unk> elimination . In addition , the electron withdrawing group increases the acidity of the α @-@ proton , allowing selective formation of the trans @-@ α @-@ <unk> via equilibration .
+It is often possible to achieve catalytic activation using a donating or withdrawing group alone , although the efficiency of the reaction ( yield , reaction time , etc . ) is typically lower .
+
+= = = Alternative cation generation = = =
+
+By extension , any <unk> cation regardless of its origin is capable of undergoing a <unk> <unk> . There have been a large number of examples published where the requisite cation is arrived at by a variety of rearrangements . One such example involves the silver catalyzed cationic ring opening of <unk> <unk> <unk> . The silver salt facilitates loss of chloride via precipitation of insoluble silver chloride .
+In the total synthesis of <unk> , epoxidation of a vinyl <unk> <unk> likewise generates a <unk> cation via ring opening of the resultant epoxide .
+
+= = = Interrupted <unk> = = =
+
+Once the <unk> has occurred , an <unk> cation is formed . As discussed extensively above , the typical course for this intermediate is elimination followed by <unk> <unk> . However , these two steps can be interrupted by various nucleophiles and electrophiles , respectively . <unk> cation trapping has been developed extensively by Fredrick G. West of the University of Alberta and his review covers the field . The <unk> cation can be trapped with heteroatom and carbon nucleophiles and can also undergo cationic cycloadditions with various tethered partners . Shown below is a cascade reaction in which successive cation trapping generates a <unk> core in one step with complete diastereoselectivity .
+<unk> trapping with various electrophiles is decidedly less common . In one study , the <unk> <unk> is paired with a Michael reaction using an iridium catalyst to initiate nucleophilic conjugate addition of the <unk> to β @-@ <unk> . In this tandem reaction the iridium catalyst is required for both conversions : it acts as the Lewis acid in the <unk> <unk> and in the next step the nitro group of <unk> first coordinates to iridium in a ligand exchange with the carbonyl ester oxygen atom before the actual Michael addition takes place to the opposite face of the R @-@ group .
+
+= = = <unk> variants = = =
+
+The development of an enantioselective <unk> <unk> is a desirable addition to the repertoire of <unk> <unk> reactions . To that end , several variations have been developed utilizing chiral auxiliaries and chiral catalysts . <unk> <unk> are also known , in which extant <unk> direct the <unk> . Almost all of the attempts are based on the idea of <unk> ; selecting one direction for the vinyl groups to " rotate " in turn sets the stereochemistry as shown below .
+Silicon @-@ directed <unk> <unk> can exhibit induced diastereoselectivity in this way . In the example below , the silyl @-@ group acts to direct the <unk> by preventing the distant alkene from rotating " towards " it via unfavorable steric interaction . In this way the silicon acts as a <unk> auxiliary . ( The starting material is not <unk> but the retention of enantiomeric excess suggests that the auxiliary directs the <unk> . )
+<unk> 's <unk> substrates can exhibit axial to tetrahedral chirality transfer if <unk> <unk> are used . The example below generates a chiral <unk> in 64 % yield and 95 % enantiomeric excess .
+<unk> has additionally developed a camphor @-@ based auxiliary for achiral <unk> that was employed in the first asymmetric synthesis of <unk> . The key step employs an unusual mixture of <unk> @-@ 2 @-@ <unk> and <unk> as solvent .
+The first chiral Lewis acid promoted asymmetric <unk> <unk> was reported by <unk> Aggarwal and utilized copper ( II ) <unk> ligand complexes with up to 98 % ee . The enantiomeric excess was unaffected by use of 50 mol % of the copper complex but the yield was significantly decreased .
+
+= = Related Reactions = =
+
+Extensions of the <unk> <unk> are generally also subsumed under the same name . For example , an α @-@ β , γ @-@ δ unsaturated ketone can undergo a similar cationic <unk> <unk> that is typically referred to as an iso @-@ <unk> <unk> reaction . Other such extensions have been given similar names , including homo @-@ <unk> <unk> and <unk> <unk> <unk> .
+
+= = = Retro @-@ <unk> reaction = = =
+
+Because they <unk> the <unk> cation , β @-@ electron donating <unk> often severely impede <unk> <unk> . Building from this , several <unk> ring openings of β @-@ <unk> <unk> have been reported . These are typically referred to as retro @-@ <unk> <unk> reactions .
+
+= = = <unk> @-@ <unk> reaction = = =
+
+Nitrogen analogues of the <unk> <unk> reaction ( known as imino @-@ <unk> <unk> reactions ) have few instances ; there is one example of a generalized imino @-@ <unk> <unk> reported ( shown below ) , and several iso @-@ imino @-@ <unk> reactions in the literature . Even these tend to suffer from poor <unk> , poor yields , or narrow scope . The difficulty stems from the relative over @-@ stabilization of the <unk> cation by electron donation , impeding <unk> .
+
+
