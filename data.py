@@ -485,13 +485,18 @@ class Stim:
         target_words = []
         target_idxs = []
         for i in range(len(data['1NP'])):
-            one = data['1NP'][i]
-            two = data['2NP'][i]
+            one = data['1NP'][i].split(' .')
+            one = list(filter(lambda x: x is not '', one))
+            one = list(map(lambda x: x.strip()+' .', one))
+
+            two = data['2NP'][i].split(' .')
+            two = list(filter(lambda x: x is not '', two))
+            two = list(map(lambda x: x.strip()+' .', two))
             reduced = data['Reduced'][i]
             unreduced = data['Unreduced'][i]
 
             #1NP + Reduced
-            sent = [one, reduced]
+            sent = one + [reduced]
             t_words = reduced.split(' ')[2:8]
             t_idxs = list(range(2, 8))
             sents.append(sent)
@@ -499,13 +504,13 @@ class Stim:
             target_idxs.append(t_idxs)
 
             #2NP + Reduced
-            sent = [two, reduced]
+            sent = two + [reduced]
             sents.append(sent)
             target_words.append(t_words)
             target_idxs.append(t_idxs)
 
             #1NP + Unreduced
-            sent = [one, unreduced]
+            sent = one + [unreduced]
             t_words = unreduced.split(' ')[4:10]
             t_idxs = list(range(4, 10))
             sents.append(sent)
@@ -513,7 +518,7 @@ class Stim:
             target_idxs.append(t_idxs)
 
             #2NP + Unreduced
-            sent = [two, unreduced]
+            sent = two + [unreduced]
             sents.append(sent)
             target_words.append(t_words)
             target_idxs.append(t_idxs)
@@ -563,13 +568,18 @@ class Stim:
         target_words = []
         target_idxs = []
         for i in range(len(data['Past'])):
-            past = data['Past'][i]
-            future = data['Future'][i]
+            past = data['Past'][i].split(' .')
+            past = list(filter(lambda x: x is not '', past))
+            past = list(map(lambda x: x.strip()+' .', past))
+
+            future = data['Future'][i].split(' .')
+            future = list(filter(lambda x: x is not '', future))
+            future = list(map(lambda x: x.strip()+' .', future))
             reduced = data['Reduced'][i]
             unreduced = data['Unreduced'][i]
 
             #Past + Reduced
-            sent = [past, reduced]
+            sent = past + [reduced]
             t_words = reduced.split(' ')[2:8]
             t_idxs = list(range(2, 8))
             sents.append(sent)
@@ -577,13 +587,13 @@ class Stim:
             target_idxs.append(t_idxs)
 
             #Future + Reduced
-            sent = [future, reduced]
+            sent = future + [reduced]
             sents.append(sent)
             target_words.append(t_words)
             target_idxs.append(t_idxs)
 
             #Past + Unreduced
-            sent = [past, unreduced]
+            sent = past + [unreduced]
             t_words = unreduced.split(' ')[4:10]
             t_idxs = list(range(4, 10))
             sents.append(sent)
@@ -591,7 +601,7 @@ class Stim:
             target_idxs.append(t_idxs)
 
             #Future + Unreduced
-            sent = [future, unreduced]
+            sent = future + [unreduced]
             sents.append(sent)
             target_words.append(t_words)
             target_idxs.append(t_idxs)

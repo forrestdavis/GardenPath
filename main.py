@@ -150,8 +150,6 @@ def run_experiment(version, vocab_file, model_files,
                     sentences, multisent_flag)
             #Get one hots
             sent_ids = corpus.get_data()
-            #print(sentences)
-            #print(sent_ids)
 
             values = test_IT(sent_ids, corpus, model)
 
@@ -162,10 +160,10 @@ def run_experiment(version, vocab_file, model_files,
 '''
 version = 'ref'
 vocab_file = 'models/glove.num_unk.vocab'
-model_files = glob.glob('models/shuffled/*.pt')[:1]
-#model_files = glob.glob('models/ordered/*.pt')[:1]
+#model_files = glob.glob('models/shuffled/*.pt')[:1]
+model_files = glob.glob('models/ordered/*.pt')[:1]
 EXP = run_experiment(version, vocab_file, model_files)
-EXP.save_csv('pilot_'+version)
+#EXP.save_csv('pilot_'+version)
 '''
 
 '''
