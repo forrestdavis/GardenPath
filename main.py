@@ -129,7 +129,7 @@ def run_experiment(version, vocab_file, model_files,
     #Loop through the models
     for model_file in model_files:
         if verbose:
-            print('testing model:', model_file)
+            print('running experiment:', version, 'testing model:', model_file)
 
         #load the model
         with open(model_file, 'rb') as f:
@@ -150,8 +150,8 @@ def run_experiment(version, vocab_file, model_files,
                     sentences, multisent_flag)
             #Get one hots
             sent_ids = corpus.get_data()
-            print(sentences)
-            print(sent_ids)
+            #print(sentences)
+            #print(sent_ids)
 
             values = test_IT(sent_ids, corpus, model)
 
@@ -159,11 +159,14 @@ def run_experiment(version, vocab_file, model_files,
 
     return EXP
 
-version = 'temp'
+'''
+version = 'ref'
 vocab_file = 'models/glove.num_unk.vocab'
 model_files = glob.glob('models/shuffled/*.pt')[:1]
 #model_files = glob.glob('models/ordered/*.pt')[:1]
 EXP = run_experiment(version, vocab_file, model_files)
+EXP.save_csv('pilot_'+version)
+'''
 
 '''
 EXP.save_csv('pilot_'+stim_file.split('/')[-1])

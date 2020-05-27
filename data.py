@@ -16,6 +16,7 @@ class Stim:
         self.TARGET_WORDS = []
         #Target indices for pairs
         self.TARGET_IDX = []
+        self.version = version
         
         #Extract target info
         if version == 'def':
@@ -27,26 +28,245 @@ class Stim:
 
         self.SURPS = {}
         self.dataframe = None
+        self.diff_dataframe = None
 
     def save_excel(self, fname):
 
-        fname = fname.split('.')[0]+'.xlsx'
+        raw = fname.split('.')[0]+'_raw.xlsx'
+        diff = fname.split('.')[0]+'_diff.xlsx'
 
         if self.dataframe is None:
             self.create_df()
+        if self.diff_dataframe is None:
+            self.create_diff_df()
 
-        self.dataframe.to_excel(fname, index=False)
+        self.dataframe.to_excel(raw, index=False)
+        self.diff_dataframe.to_excel(diff, index=False)
 
     def save_csv(self, fname):
-        fname = fname.split('.')[0]+'.csv'
+        raw = fname.split('.')[0]+'_raw.csv'
+        diff = fname.split('.')[0]+'_diff.csv'
 
         if self.dataframe is None:
             self.create_df()
+        if self.diff_dataframe is None:
+            self.create_diff_df()
 
-        self.dataframe.to_csv(fname, index=False)
+        self.dataframe.to_csv(raw, index=False)
+        self.diff_dataframe.to_csv(diff, index=False)
 
     def create_df(self):
-        pass
+
+        if self.version == 'def':
+            self.create_def_df()
+        elif self.version == 'ref' or self.version == 'temp':
+            self.create_ref_temp_df()
+
+    def create_diff_df(self):
+
+        if self.version == 'def':
+            self.create_diff_def_df()
+        elif self.version == 'temp' or self.version == 'ref':
+            self.create_diff_ref_temp_df()
+
+    def create_diff_ref_temp_df(self):
+
+        header = ['exp', 'model_type', 'target_type', 
+                'condition', 'model', 
+                'rel_surp', 'by_surp', 
+                'verb_by_surp', 'det_surp', 'noun_surp', 'NP_surp', 
+                'RC_surp', 'verb_surp', 'extra_surp', 'main_surp']
+
+        data = []
+        for x in range(len(self.SENTS)):
+            sent = self.SENTS[x]
+            context = ' '.join(sent[:-1])
+            target = sent[-1]
+
+            for model in self.SURPS:
+
+                if x == 0:
+                    continue
+
+                prev_surp = self.SURPS[model][x-1]
+                surp = self.SURPS[model][x]
+
+                t = ''
+                if x % 4 == 1:
+                    if self.version == 'ref':
+                        cond = '1NP_2NP'
+                    else:
+                        cond = 'Past_Future'
+                    t = 'reduced'
+                elif x % 4 == 3:
+                    if self.version == 'ref':
+                        cond = '1NP_2NP'
+                    else:
+                        cond = 'Past_Future'
+                    t = 'unreduced'
+
+                if t is '':
+                    continue
+
+                if 'shuffled' in model:
+                    data.append([self.version, 'shuffled', t, cond, 
+                        model, prev_surp[0]-surp[0], prev_surp[1]-surp[1], 
+                        (prev_surp[0]+prev_surp[1])-(surp[0]+surp[1]), 
+                        prev_surp[2]-surp[2], prev_surp[3]-surp[3], 
+                        (prev_surp[2]+prev_surp[3])-(surp[2]+surp[3]), 
+                        (prev_surp[0]+prev_surp[1]+prev_surp[2]+prev_surp[3])-(surp[0]+surp[1]+surp[2]+surp[3]),
+                        prev_surp[4]-surp[4], prev_surp[5]-surp[5], 
+                        (prev_surp[4]+prev_surp[5])-(surp[4]+surp[5])])
+                else:
+                    data.append([self.version, 'ordered', t, cond, 
+                        model, prev_surp[0]-surp[0], prev_surp[1]-surp[1], 
+                        (prev_surp[0]+prev_surp[1])-(surp[0]+surp[1]), 
+                        prev_surp[2]-surp[2], prev_surp[3]-surp[3], 
+                        (prev_surp[2]+prev_surp[3])-(surp[2]+surp[3]), 
+                        (prev_surp[0]+prev_surp[1]+prev_surp[2]+prev_surp[3])-(surp[0]+surp[1]+surp[2]+surp[3]),
+                        prev_surp[4]-surp[4], prev_surp[5]-surp[5], 
+                        (prev_surp[4]+prev_surp[5])-(surp[4]+surp[5])])
+                    
+        self.diff_dataframe = pd.DataFrame(data, columns=header)
+
+    def create_diff_def_df(self):
+
+        header = ['exp', 'model_type', 'target_type', 
+                'condition', 'model', 'surp']
+
+        data = []
+        for x in range(len(self.SENTS)):
+            sent = self.SENTS[x]
+            context = ' '.join(sent[:-1])
+            target = sent[-1]
+            region = ' '.join(self.TARGET_WORDS[x])
+
+            for model in self.SURPS:
+
+                t = ''
+                if x % 6 == 1:
+                    cond = 'New_Old_Def'
+                    t = 'reduced'
+                    surp = sum(self.SURPS[model][x+1])-sum(self.SURPS[model][x])
+                if x % 6 == 4:
+                    cond = 'New_Old_Def'
+                    t = 'unreduced'
+                    surp = sum(self.SURPS[model][x+1])-sum(self.SURPS[model][x])
+
+                if x % 6 == 2:
+                    cond = 'New_Indef_Def'
+                    t = 'reduced'
+                    surp = sum(self.SURPS[model][x-2])-sum(self.SURPS[model][x])
+                if x % 6 == 5:
+                    cond = 'New_Indef_Def'
+                    t = 'unreduced'
+                    surp = sum(self.SURPS[model][x-2])-sum(self.SURPS[model][x])
+
+                if t is '':
+                    continue
+
+                if 'shuffled' in model:
+                    data.append([self.version, 'shuffled', t, 
+                        cond, model, surp])
+                else:
+                    data.append([self.version, 'ordered', t, 
+                        cond, model, surp])
+
+        self.diff_dataframe = pd.DataFrame(data, columns=header)
+
+    def create_ref_temp_df(self):
+
+        header = ['exp', 'model_type', 'target_type', 
+                'condition', 'model', 'context_sents', 
+                'target_sent', 'rel_surp', 'by_surp', 
+                'verb_by_surp', 'det_surp', 'noun_surp', 'NP_surp', 
+                'RC_surp', 'verb_surp', 'extra_surp', 'main_surp']
+        data = []
+        for x in range(len(self.SENTS)):
+            sent = self.SENTS[x]
+            context = ' '.join(sent[:-1])
+            target = sent[-1]
+
+            if x % 4 == 0:
+                if self.version == 'ref':
+                    cond = '1NP_Reduced'
+                else:
+                    cond = 'Past_Reduced'
+                t = 'reduced'
+            elif x % 4 == 1:
+                if self.version == 'ref':
+                    cond = '2NP_Reduced'
+                else:
+                    cond = 'Future_Reduced'
+                t = 'reduced'
+            elif x % 4 == 2:
+                if self.version == 'ref':
+                    cond = '1NP_Unreduced'
+                else:
+                    cond = 'Past_Unreduced'
+                t = 'unreduced'
+            else:
+                if self.version == 'ref':
+                    cond = '2NP_Unreduced'
+                else:
+                    cond = 'Future_Unreduced'
+                t = 'unreduced'
+            
+            for model in self.SURPS:
+                surp = self.SURPS[model][x]
+                if 'shuffled' in model:
+                    data.append([self.version, 'shuffled', t, cond, 
+                        model, context, target, surp[0], surp[1], 
+                        surp[0]+surp[1], surp[2], surp[3], 
+                        surp[2]+surp[3], surp[0]+surp[1]+surp[2]+surp[3], 
+                        surp[4], surp[5], surp[4]+surp[5]])
+                else:
+                    data.append([self.version, 'ordered', t, cond, 
+                        model, context, target, surp[0], surp[1], 
+                        surp[0]+surp[1], surp[2], surp[3], 
+                        surp[2]+surp[3], surp[0]+surp[1]+surp[2]+surp[3], 
+                        surp[4], surp[5], surp[4]+surp[5]])
+
+        self.dataframe = pd.DataFrame(data, columns=header)
+
+    def create_def_df(self):
+
+        header = ['exp', 'model_type', 'target_type', 'condition', 'model', 'context_sents', 
+                'target_sent', 'region', 'surp']
+        data = []
+        for x in range(len(self.SENTS)):
+            sent = self.SENTS[x]
+            context = ' '.join(sent[:-1])
+            target = sent[-1]
+            region = ' '.join(self.TARGET_WORDS[x])
+
+            if x % 6 == 0:
+                cond = 'New_IndefAmbi'
+                t = 'reduced'
+            elif x % 6 == 1:
+                cond = 'Old_DefAmbi'
+                t = 'reduced'
+            elif x % 6 == 2:
+                cond = 'New_DefAmbi'
+                t = 'reduced'
+            elif x % 6 == 3:
+                cond = 'New_IndefUnambi'
+                t = 'unreduced'
+            elif x % 6 == 4:
+                cond = 'Old_DefUnambi'
+                t = 'unreduced'
+            else:
+                cond = 'New_DefUnambi'
+                t = 'unreduced'
+            
+            for model in self.SURPS:
+                surp = self.SURPS[model][x]
+                if 'shuffled' in model:
+                    data.append([self.version, 'shuffled', t, cond, model, context, target, region, sum(surp)])
+                else:
+                    data.append([self.version, 'ordered', t, cond, model, context, target, region, sum(surp)])
+
+        self.dataframe = pd.DataFrame(data, columns=header)
 
     def load_IT(self, model_name, target_idx, values, multisent_flag=True):
         
@@ -70,9 +290,9 @@ class Stim:
         #print(values)
 
         target = values[-1]
-        print(target)
-        print(target_words)
-        print(target_idxs)
+        #print(target)
+        #print(target_words)
+        #print(target_idxs)
         surps = []
         for x in range(len(target_words)):
             t_word = target_words[x]
@@ -82,7 +302,7 @@ class Stim:
 
             surps.append(target[t_idx][1])
 
-        print(surps)
+        #print(surps)
         assert len(surps) != 0
 
         if model_name not in self.SURPS:
