@@ -36,6 +36,8 @@ for value in values:
     total_rows = 0
     for article_data in glob.glob(direct):
         surp, row = get_surp_rows(article_data)
+        if row == 0:
+            print(article_data)
         total_surp += surp
         total_rows += row
 

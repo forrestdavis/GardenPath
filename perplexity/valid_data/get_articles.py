@@ -1,3 +1,5 @@
+N = 100
+
 def write_article(article_num, sents):
     fname = 'wiki103_'+str(article_num)+'.valid'
 
@@ -17,9 +19,16 @@ with open('../wiki103.valid', 'r') as valid_data:
         #flag for article labels
         if line and line[0] == '=':
             if line[2] != '=':
-                write_article(article_num, sents)
+                #file too big break up
+                if len(sents) > 150:
+                    x = [sents[i:i + N] for i in range(0, len(sents), N)]
+                    for sent in x:
+                        write_article(article_num, sent)
+                        article_num += 1
+                else:
+                    write_article(article_num, sents)
+                    article_num += 1
                 sents = []
-                article_num += 1
 
         sents.append(line)
 
