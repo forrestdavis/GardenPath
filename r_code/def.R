@@ -94,9 +94,6 @@ new_old_shuff <- subset(x = def_data_context,
 new_old_ordered <- subset(x = def_data_context, 
                             subset=model_type=='ordered' & condition=='New_Old_Def')
 
-t.test(SHUFF_Context_R$surp, RAND_Context_R$surp)
-t.test(RAND_Context_R$surp,mu=0)
-t.test(SHUFF_Context_R$surp,mu=0)
 
 t.test(new_old_shuff$surp, new_old_ordered$surp)
 t.test(new_old_ordered$surp,mu=0)

@@ -1,3 +1,4 @@
 __pycache__
 valid_run.sh
 **/logs
+.DS*

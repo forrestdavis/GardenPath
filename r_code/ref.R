@@ -89,24 +89,6 @@ t.test(shuff_unreduced$by_surp, order_unreduced$by_surp)
 t.test(shuff_unreduced$by_surp, mu=0)
 t.test(order_unreduced$by_surp, mu=0)
 
-##np only
-t.test(shuff_reduced$NP_surp, order_reduced$NP_surp)
-t.test(shuff_reduced$NP_surp, mu=0)
-t.test(order_reduced$NP_surp, mu=0)
-
-t.test(shuff_unreduced$NP_surp, order_unreduced$NP_surp)
-t.test(shuff_unreduced$NP_surp, mu=0)
-t.test(order_unreduced$NP_surp, mu=0)
-
-##main
-t.test(shuff_reduced$main_surp, order_reduced$main_surp)
-t.test(shuff_reduced$main_surp, mu=0)
-t.test(order_reduced$main_surp, mu=0)
-
-t.test(shuff_unreduced$main_surp, order_unreduced$main_surp)
-t.test(shuff_unreduced$main_surp, mu=0)
-t.test(order_unreduced$main_surp, mu=0)
-
 shuff_r <- shuff_reduced$main_surp
 shuff_u <- shuff_unreduced$main_surp
 

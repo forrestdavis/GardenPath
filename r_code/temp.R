@@ -88,15 +88,6 @@ t.test(shuff_unreduced$NP_surp, order_unreduced$NP_surp)
 t.test(shuff_unreduced$NP_surp, mu=0)
 t.test(order_unreduced$NP_surp, mu=0)
 
-##main (can't use this since should be future tense -- mistake on my coding)
-t.test(shuff_reduced$main_surp, order_reduced$main_surp)
-t.test(shuff_reduced$main_surp, mu=0)
-t.test(order_reduced$main_surp, mu=0)
-
-t.test(shuff_unreduced$main_surp, order_unreduced$main_surp)
-t.test(shuff_unreduced$main_surp, mu=0)
-t.test(order_unreduced$main_surp, mu=0)
-
 shuff_r <- shuff_reduced$by_surp
 shuff_u <- shuff_unreduced$by_surp
 

@@ -18,7 +18,7 @@ with open('../wiki103.valid', 'r') as valid_data:
         if line and line[0] == '=':
             if line[2] != '=':
                 write_article(article_num, sents)
-                sents = [line]
+                sents = []
                 article_num += 1
 
         sents.append(line)
