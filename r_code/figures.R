@@ -171,11 +171,11 @@ shuff_reduced <- subset(x=ref_data_context,
 order_reduced <- subset(x=ref_data_context, 
                         subset=model_type=='ordered' & target_type=='reduced')
 
-mean <- c(mean(shuff_reduced$verb_by_surp), mean(order_reduced$verb_by_surp))
+mean <- c(mean(shuff_reduced$by_surp), mean(order_reduced$by_surp))
 exp <- c('Shuffled', 'Ordered')
 stim <- c('reduced', 'reduced')
-ci <- c(qnorm(0.95)*sd(shuff_reduced$verb_by_surp)/sqrt(length(shuff_reduced$verb_by_surp)), 
-        qnorm(0.95)*sd(order_reduced$verb_by_surp)/sqrt(length(order_reduced$verb_by_surp)))
+ci <- c(qnorm(0.95)*sd(shuff_reduced$by_surp)/sqrt(length(shuff_reduced$by_surp)), 
+        qnorm(0.95)*sd(order_reduced$by_surp)/sqrt(length(order_reduced$by_surp)))
 
 Context <- data.frame(exp, stim, mean, ci)
 
