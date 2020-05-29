@@ -61,7 +61,7 @@ To run gp.py with non-default settings:
     optional arguments:
       -h, --help       show this help message and exit
       --models MODELS  model to run [a|b|c|d|e|all]
-      --exp EXP        Experiment to run [def|ref|temp]
+      --exp EXP        Experiment to run [def|ref|temp|all]
 
 Example run:
         gp.py --models a --exp def

@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(description='Garden Path Alleviation Experiment
 parser.add_argument('--models', type=str, default='all',
                     help='model to run [a|b|c|d|e|all]')
 parser.add_argument('--exp', type=str, default='all', 
-                    help='Experiment to run [def|ref|temp]')
+                    help='Experiment to run [def|ref|temp|all]')
 
 args = parser.parse_args()
 
