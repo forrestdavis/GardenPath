@@ -1,4 +1,4 @@
-# ExperimentNorming
+# GardenPath
 Project for probing pragmatic and discourse knowledge acquired by 
 RNN language models using garden path alleviation experiments. There
 are three classes of experiments. One experiment set targets
@@ -20,7 +20,7 @@ Requires the following python packages (available through pip):
 
 
 ### Quick Usage
-To run norming on stimuli:
+To recreate experimental results from the paper:
 
     python gp.py
 
