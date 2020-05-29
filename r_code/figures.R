@@ -63,32 +63,20 @@ GP <- data.frame(exp, stim, mean, ci)
 
 plt5 <- ggplot(GP, aes(x=exp, y=mean, fill=stim)) + 
   geom_bar(position=position_dodge(), stat="identity", color='black') +
-  scale_fill_manual(values = c("#999999", "white"), name= "", labels=c("Reduced", "Unreduced")) +
+  scale_fill_manual(values = c("#999999", "white"), name= "Model Type", labels=c("Reduced", "Unreduced")) +
   theme(text = element_text(size=20))+
   geom_errorbar(aes(ymin=mean-ci, ymax=mean+ci),
                 width=.1,                    # Width of the error bars
                 position=position_dodge(.9)) + ylim(0, 40)
 
-plt5 <- plt5 +labs(x ="(b)", y = "")
+plt5 <- plt5 +labs(x ="(b)", y = "") + theme(legend.position = c(0.95, 0.95), 
+                                        legend.justification = c("right", "top"), 
+                                       legend.box.just = "right", 
+                                       legend.margin = margin(6, 6, 6, 6))
 
-blankPlot <- ggplot() + theme_void()
-
-get_legend<-function(myggplot){
-  tmp <- ggplot_gtable(ggplot_build(myggplot))
-  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
-  legend <- tmp$grobs[[leg]]
-  return(legend)
-}
-
-legend <- get_legend(plt5)
-
-plt5 <- plt5 + theme(legend.position="none")
-
-
-gp_plt <- grid.arrange(blankPlot, legend, plt1,plt5, top = textGrob("Surprisal of Reduced vs. Unreduced Targets", gp=gpar(fontsize=30,font=8)),
-                       bottom = textGrob("Model Training Method\n", gp=gpar(fontsize=20,font=8)),
-                       ncol=2, nrow=2, widths=c(2.7,2.7), heights = c(0.7,3))
-#layout_matrix = matrix(c(1,2), ncol=2, byrow=TRUE))
+gp_plt <- grid.arrange(plt1,plt5, top = textGrob("Surprisal of Reduced vs. Unreduced Targets\n", gp=gpar(fontsize=30,font=8)),
+                        bottom = textGrob("\n", gp=gpar(fontsize=20,font=8)),
+                        layout_matrix = matrix(c(1,2), ncol=2, byrow=TRUE))
 
 
 ############################
@@ -144,16 +132,19 @@ Context <- data.frame(exp, stim, mean, ci)
 
 plt7 <- ggplot(Context, aes(x=exp, y=mean, fill=exp)) + 
   geom_bar(position=position_dodge(), stat="identity", color='black') +
-  scale_fill_manual(values = c("#999999", "white"), name= "Type", labels=c("Ordered", "Shuffled")) +
+  scale_fill_manual(values = c("#999999", "white"), name= "Model Type", labels=c("Ordered", "Shuffled")) +
   theme(text = element_text(size=20))+
   geom_errorbar(aes(ymin=mean-ci, ymax=mean+ci),
                 width=.2,                    # Width of the error bars
                 position=position_dodge(.9)) + ylim(-0.5,2)
 
-plt7 <- plt7 +labs(x ="(b)", y = "Surprisal of Discourse New minus Old") + theme(legend.position="none") 
+plt7 <- plt7 +labs(x ="(b)", y = "Surprisal of Discourse New minus Old") + theme(legend.position = c(0.95, 0.95), 
+                      legend.justification = c("right", "top"), 
+                      legend.box.just = "right", 
+                      legend.margin = margin(6, 6, 6, 6))
 
 def_plt <- grid.arrange(plt6,plt7, top = textGrob("Surprisal of Garden Path between Contexts\n", gp=gpar(fontsize=30,font=8)),
-                             bottom = textGrob("Model Training Method\n", gp=gpar(fontsize=20,font=8)),
+                             bottom = textGrob("\n", gp=gpar(fontsize=20,font=8)),
                              layout_matrix = matrix(c(1,2), ncol=2, byrow=TRUE))
 
 ############################
@@ -211,7 +202,7 @@ order_u <- order_unreduced$by_surp
 
 mean <- c(mean(shuff_r), mean(shuff_u), mean(order_r), mean(order_u))
 exp <- c('Shuffled', 'Shuffled', 'Ordered', 'Ordered')
-stim <- c('reduced', 'unreduced', 'reduced', 'unreduced')
+stim <- c('Reduced', 'Unreduced', 'Reduced', 'Unreduced')
 ci <- c(qnorm(0.95)*sd(shuff_r)/sqrt(length(shuff_r)), 
         qnorm(0.95)*sd(shuff_u)/sqrt(length(shuff_u)), 
         qnorm(0.95)*sd(order_r)/sqrt(length(order_r)), 
@@ -221,22 +212,17 @@ Context <- data.frame(exp, stim, mean, ci)
 
 plt9 <- ggplot(Context, aes(x=stim, y=mean, fill=exp)) + 
   geom_bar(position=position_dodge(), stat="identity", color='black') +
-  scale_fill_manual(values = c("#999999", "white"), name= "", labels=c("Ordered", "Shuffled")) +
+  scale_fill_manual(values = c("#999999", "white"), name= "Model Type", labels=c("Ordered", "Shuffled")) +
   theme(text = element_text(size=20))+
   geom_errorbar(aes(ymin=mean-ci, ymax=mean+ci),
                 width=.2,                    # Width of the error bars
                 position=position_dodge(.9)) + ylim(-0.5,2)
 
-plt9 <- plt9 +labs(x ="(b)", y = "Surprisal of Past minus Future") #+ theme(legend.position="none") 
+plt9 <- plt9 +labs(x ="(b)", y = "Surprisal of Past minus Future") + theme(legend.position = c(0.95, 0.95), 
+                                                                           legend.justification = c("right", "top"), 
+                                                                           legend.box.just = "right", 
+                                                                           legend.margin = margin(6, 6, 6, 6))
 
-blankPlot <- ggplot() + theme_void()
-
-legend <- get_legend(plt9)
-
-plt9 <- plt9 + theme(legend.position="none")
-
-
-ref_temp_plt <- grid.arrange(blankPlot, legend, plt8,plt9, top = textGrob("Surprisal of Garden Path between Contexts", gp=gpar(fontsize=30,font=8)),
-                       bottom = textGrob("", gp=gpar(fontsize=20,font=8)),
-                       ncol=2, nrow=2, widths=c(2.7,2.7), heights = c(0.7,3))
-
+ref_temp_plt <- grid.arrange(plt8,plt9, top = textGrob("Surprisal of Garden Path between Contexts\n", gp=gpar(fontsize=30,font=8)),
+                        bottom = textGrob("\n", gp=gpar(fontsize=20,font=8)),
+                        layout_matrix = matrix(c(1,2), ncol=2, byrow=TRUE))
