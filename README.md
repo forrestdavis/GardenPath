@@ -62,10 +62,6 @@ To run gp.py with non-default settings:
       -h, --help       show this help message and exit
       --models MODELS  model to run [a|b|c|d|e|all]
       --exp EXP        Experiment to run [def|ref|temp]
-                    
-        usage: norm.py [-h] [--models models] [--stim_file stim_file] [--has_header]
-                       [--multi_sent] [--output_file output_file]
-                       [--file_type file_type]
 
 Example run:
         gp.py --models a --exp def
