@@ -72,5 +72,5 @@ results will be saved to results as a_def.csv (and a_def.xlsx).
 One can prevent the saving to an excel file by commented out save_excel in gp.py.
 
 ### References
-Forrest Davis and Marten van Schijndel. "Interaction with Context During Recurrent Neural Network 
-Sentence Processing." In Proceedings of the 42nd Annual Meeting of the Cognitive Science Society (CogSci 2020). 2020.
+Forrest Davis and Marten van Schijndel. ["Interaction with Context During Recurrent Neural Network 
+Sentence Processing."](https://psyarxiv.com/8r65d/) In Proceedings of the 42nd Annual Meeting of the Cognitive Science Society (CogSci 2020). 2020.
