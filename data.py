@@ -4,7 +4,6 @@
 #garden path experiments.
 #############################################
 import pandas as pd
-import numpy as np
 
 class Stim:
 

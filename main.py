@@ -3,6 +3,7 @@
 #for measuring the behavior of a feed-forward 
 #LSTM with two layers.
 #############################################
+
 import math
 import glob
 import sys
@@ -156,19 +157,3 @@ def run_experiment(version, vocab_file, model_files,
             EXP.load_IT(model_file, x, values, multisent_flag)
 
     return EXP
-
-'''
-version = 'ref'
-vocab_file = 'models/glove.num_unk.vocab'
-#model_files = glob.glob('models/shuffled/*.pt')[:1]
-model_files = glob.glob('models/ordered/*.pt')[:1]
-EXP = run_experiment(version, vocab_file, model_files)
-#EXP.save_csv('pilot_'+version)
-'''
-
-'''
-EXP.save_csv('pilot_'+stim_file.split('/')[-1])
-
-EXP.save_excel('normed_'+stim_file.split('/')[-1])
-EXP.save_csv('normed_'+stim_file.split('/')[-1])
-'''
