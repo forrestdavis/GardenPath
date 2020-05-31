@@ -69,7 +69,7 @@ Example run:
 This will run the experiments for NP/Z using the first shuffled and ordered models. The 
 results will be saved to results as a_def.csv (and a_def.xlsx).
 
-One can prevent the saving to an excel file by commented out save_excel in gp.py.
+One can prevent the saving to an excel file by commenting out save_excel in gp.py.
 
 ### References
 Forrest Davis and Marten van Schijndel. ["Interaction with Context During Recurrent Neural Network 
