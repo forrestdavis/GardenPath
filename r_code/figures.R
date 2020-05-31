@@ -2,12 +2,16 @@ library(grid)
 library(gridExtra)
 library(ggplot2)
 
+#put your path here
+PATH = '/Users/forrestdavis/Projects/GardenPath/'
+
 #######################################
 ### MV/RR and NP/Z reduced/unreduced ##
 #######################################
 
-ref_data = read.csv('/Users/forrestdavis/Projects/GardenPath/results/ref_raw.csv')
-temp_data = read.csv('/Users/forrestdavis/Projects/GardenPath/results/temp_raw.csv')
+
+ref_data = read.csv(paste(PATH, "results/ref_raw.csv", sep=''))
+temp_data = read.csv(paste(PATH, "results/temp_raw.csv", sep=''))
 
 mv_rr <- rbind(ref_data, temp_data)
 
@@ -41,7 +45,7 @@ plt1 <- ggplot(GP, aes(x=exp, y=mean, fill=stim)) +
 plt1 <- plt1 +labs(x ="(a)", y = "Mean Surprisal at Critical Region") + theme(legend.position="none") 
 
 #load raw def_data 
-def_data = read.csv('/Users/forrestdavis/Projects/GardenPath/results/def_raw.csv')
+def_data = read.csv(paste(PATH, "results/def_raw.csv", sep=''))
 
 shuff_u <- subset(x=def_data, 
                   subset = model_type == 'shuffled' & target_type == 'unreduced')
@@ -88,7 +92,7 @@ gp_plt <- grid.arrange(plt1,plt5, top = textGrob("Surprisal of Reduced vs. Unred
 ######################################
 
 ##New Indef - New Def
-def_data_context = read.csv('/Users/forrestdavis/Projects/GardenPath/results/def_diff.csv')
+def_data_context = read.csv(paste(PATH, "results/def_diff.csv", sep=''))
 #restrict to just reduced
 def_data_context = subset(x=def_data_context, subset= target_type=='reduced')
 
@@ -155,7 +159,7 @@ def_plt <- grid.arrange(plt6,plt7, top = textGrob("Surprisal of Garden Path betw
 #    Contexts
 ######################################
 
-ref_data_context = read.csv('/Users/forrestdavis/Projects/GardenPath/results/ref_diff.csv')
+ref_data_context = read.csv(paste(PATH, "results/ref_diff.csv", sep=''))
 
 shuff_reduced <- subset(x=ref_data_context, 
                         subset=model_type=='shuffled' & target_type=='reduced')
@@ -182,7 +186,7 @@ plt8 <- plt8 +labs(x ="(a)", y = "Surprisal of One NP minus Two NP") +  theme(le
 
 
 #Differences by context temp
-temp_data_context = read.csv('/Users/forrestdavis/Projects/GardenPath/results/temp_diff.csv')
+temp_data_context = read.csv(paste(PATH, "results/temp_diff.csv", sep=''))
 
 shuff_reduced <- subset(x=temp_data_context, 
                         subset=model_type=='shuffled' & target_type=='reduced')

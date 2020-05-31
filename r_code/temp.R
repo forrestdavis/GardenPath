@@ -2,13 +2,15 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 
+#Put your path here
+PATH = '/Users/forrestdavis/Projects/GardenPath/'
 
 ############################
 #####   Temporal  #######
 ############################
 
 #load raw ref data
-temp_data = read.csv('/Users/forrestdavis/Projects/GardenPath/results/temp_raw.csv')
+temp_data = read.csv(paste(PATH, "results/temp_raw.csv", sep=''))
 
 res.aov2 <- aov(RC_surp ~ model_type*target_type, data = ref_data)
 summary(res.aov2)
@@ -49,7 +51,7 @@ plt3 <- plt3 +labs(title="Surprisal of Reduced vs. Unreduced",
 ###################################
 
 #Differences by context
-temp_data_context = read.csv('/Users/forrestdavis/Projects/GardenPath/results/temp_diff.csv')
+temp_data_context = read.csv(paste(PATH, "results/temp_diff.csv", sep=''))
 
 shuff_reduced <- subset(x=temp_data_context, 
                         subset=model_type=='shuffled' & target_type=='reduced')

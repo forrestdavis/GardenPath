@@ -2,13 +2,15 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 
+#Put your path here
+PATH = '/Users/forrestdavis/Projects/GardenPath/'
 
 ############################
 #####   Definite     #######
 ############################
 
 #load raw def_data (to compare reduced vs unreduced)
-def_data = read.csv('/Users/forrestdavis/Projects/GardenPath/results/def_raw.csv')
+def_data = read.csv(paste(PATH, "results/def_raw.csv", sep=''))
 
 #effect of model type (shuffled|ordered) and target_type (reduced|unreduced)
 res.aov2 <- aov(surp ~ model_type*target_type, data=def_data)
@@ -50,7 +52,7 @@ plt5 <- plt5 +labs(title="Surprisal of Reduced vs. Unreduced",
 ######################################
 
 ##New Indef - New Def
-def_data_context = read.csv('/Users/forrestdavis/Projects/GardenPath/results/def_diff.csv')
+def_data_context = read.csv(paste(PATH, "results/def_diff.csv", sep=''))
 #restrict to just reduced
 def_data_context = subset(x=def_data_context, subset= target_type=='reduced')
 
